@@ -1,1 +1,6 @@
 prometheus-example-app
+.idea/argocd-o11y-demo-1.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+/vendor/
