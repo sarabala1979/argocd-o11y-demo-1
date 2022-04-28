@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: argocd-o11y-demo
-          image: sarabala1979/argocd-o11y-demo:v1
+          image: sarabala1979/argocd-o11y-demo:v2
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
