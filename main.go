@@ -34,7 +34,6 @@ var (
 		Help: "Duration of all HTTP requests",
 	}, []string{"code", "handler", "method"})
 )
-
 const letterBytes = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 var s0 string
 
@@ -48,7 +47,7 @@ func RandStringBytes(n int) string {
 }
 
 func main() {
-	version.Set(1)
+	version.Set(2)
 	bind := ""
 	enableH2c := false
 	flagset := flag.NewFlagSet(os.Args[0], flag.ExitOnError)
@@ -73,7 +72,7 @@ func main() {
 	})
 
 	memLeakHandler := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
+		time.Sleep(time.Duration(rand.Intn(30)) * time.Second)
 		w.WriteHeader(http.StatusOK)
 		s0 = RandStringBytes(10000000)
 

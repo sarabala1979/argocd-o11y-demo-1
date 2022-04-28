@@ -32,12 +32,20 @@ COPY . .
 # Build the application.
 RUN CGO_ENABLED=0 go build -o ./bin/main ./main.go
 
+RUN CGO_ENABLED=0 go build -o ./bin/tool ./tool/main.go
 # Finally our multi-stage to build a small image
 # Start a new stage from scratch
-FROM scratch
-
+FROM scratch as demoapp
 # Copy the Pre-built binary file
 COPY --from=builder /app/bin/main .
 
 # Run executable
 CMD ["./main"]
+
+
+FROM scratch as demotool
+# Copy the Pre-built binary file
+COPY --from=builder /app/bin/tool .
+
+# Run executable
+CMD ["./tool"]
